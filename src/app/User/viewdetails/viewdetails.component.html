@@ -1,0 +1,13 @@
+<div class="p-3">
+  <h2 class="fw-bold">🍗 {{ data.name }}</h2>
+  <img 
+    [src]="'http://localhost:9090/uploads/' + data.images"
+    width="100%" class="rounded"
+  >
+  <p>Category: {{ data.category }}</p>
+  <p>Status: {{ data.status }}</p>
+  <p class="text-danger fw-bold">₹ {{ data.price }}</p>
+<button class="btn btn-secondary w-30 m-1">Order</button>
+  <button class="btn btn-danger w-30" (click)="close()">Close</button>
+  
+</div>

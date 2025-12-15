@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <div class="card shadow p-4">
+        <h3 class="text-center mb-3">Login</h3>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+          <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" class="form-control" formControlName="username">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" formControlName="password">
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Login</button>
+
+        </form>
+      </div>
+    </div>
+    <div class="card-show p-4">
+      <h3>Don't you have account <span (click)="RegisterPage()">Register here</span></h3>
+    </div>
+  </div>
+</div>

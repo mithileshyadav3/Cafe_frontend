@@ -1,0 +1,41 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="p-3">
+
+  <!-- Product Name -->
+  <div class="mb-3">
+    <label class="form-label">Product Name</label>
+    <input type="text" class="form-control" formControlName="name">
+  </div>
+
+  <!-- Category -->
+  <div class="mb-3">
+    <label class="form-label">Category</label>
+    <input type="text" class="form-control" formControlName="category">
+  </div>
+
+  <!-- Status -->
+  <div class="mb-3">
+    <label class="form-label">Status</label>
+    <select class="form-select" formControlName="status">
+      <option value="">Select</option>
+      <option value="available">Available</option>
+      <option value="not_available">Not Available</option>
+    </select>
+  </div>
+
+  <!-- Price -->
+  <div class="mb-3">
+    <label class="form-label">Price</label>
+    <input type="number" class="form-control" formControlName="price">
+  </div>
+
+  <!-- Image -->
+  <div class="mb-3">
+    <label class="form-label">Product Image</label>
+    <input type="file" class="form-control" (change)="onFileChange($event)">
+  </div>
+
+  <!-- Buttons -->
+  <button type="submit" class="btn btn-primary me-2" >Update</button>
+  <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+
+</form>

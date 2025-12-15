@@ -1,0 +1,105 @@
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+  <div class="container-fluid">
+
+    <!-- Brand -->
+    <a class="navbar-brand fw-bold text-danger fs-4" href="#">
+      🍗 KFC Clone
+    </a>
+
+    <!-- Toggle Button (Mobile) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+ <div class="collapse navbar-collapse" id="navbarNav">
+
+      <!-- Center Search Bar -->
+   
+  
+
+
+<!-- Suggestions -->
+<!-- <div *ngIf="suggestions.length > 0" class="border mt-1 p-2 bg-white position-absolute">
+  <div *ngFor="let item of suggestions" class="p-1">
+    {{ item.name }}
+  </div>
+</div> -->
+
+      <!-- Right Menu -->
+      <ul class="navbar-nav ms-auto">
+        
+
+       
+
+        <li class="nav-item">
+          <a class="nav-link" (click)="loginPage()">Login</a>
+        </li>
+        <li class="nav-item">
+         
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<div class="container mt-4">
+   <input 
+    type="text"
+    [formControl]="searchControl"
+    class="form-control rounded-pill px-3"
+
+    placeholder="Search for chicken, burger"
+  >
+  <h2 class="text-center mb-4 fw-bold">🔥 KFC Style Menu</h2>
+ @if (filterproducts.length>0) {
+  <div class="row">
+   
+    <div class="col-md-3 mb-4" *ngFor="let p of filterproducts">
+      <div class="card shadow-lg border-0 rounded-4">
+        
+        <!-- Product Image -->
+        <img 
+          [src]="'http://localhost:9090/uploads/' + p.images"
+          class="card-img-top"
+          style="height: 180px; object-fit: cover; border-top-left-radius: 12px; border-top-right-radius: 12px;"
+        >
+
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold">{{ p.name }}</h5>
+
+          <p class="text-muted mb-1">{{ p.status }}</p>
+          <p class="fw-bold text-danger fs-5">₹ {{ p.price }}</p>
+
+          <button class="btn btn-danger w-100 rounded-pill" (click)="viewDetails(p)">
+            view details
+          </button>
+        </div>
+
+      </div>
+    </div>
+  
+  </div>
+  <div class="d-flex justify-content-center mt-4">
+
+  <button class="btn btn-dark mx-2" (click)="prev()" [disabled]="currentpage === 1">
+    ◀ Previous
+  </button>
+
+  <span class="px-3 py-2">{{ currentpage }} / {{ totalpages }}</span>
+
+  <button class="btn btn-dark mx-2" (click)="next()" [disabled]="currentpage === totalpages">
+    Next ▶
+  </button>
+    
+</div>
+}
+@else {
+  <div>
+    <p>No product found</p>
+  </div>
+}  
+</div>

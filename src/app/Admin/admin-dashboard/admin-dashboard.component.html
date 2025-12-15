@@ -1,0 +1,31 @@
+<div class="d-flex">
+  
+  <!-- Sidebar -->
+  <div  class="bg-dark text-white p-3 sidebar" style="width: 250px; height: 100vh; position: fixed;">
+    <h4 class="text-center mb-4">Admin</h4>
+
+    <ul class="nav flex-column">
+      <li class="nav-item mb-2" >
+        <a class="nav-link text-white" (click)="selecttab='createuser'">View Product</a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link text-white" (click)="selecttab='viewuser'">View Users</a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link text-white" (click)="selecttab='addproduct'">Add Product</a>
+      </li>
+      
+      <li class="nav-item mb-2">
+        <a class="nav-link text-white" (click)="Logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div style="margin-left: 250px; padding: 20px; width: 100%;">
+   <app-create-user *ngIf="selecttab==='createuser'"></app-create-user>
+   <app-view-user *ngIf="selecttab==='viewuser'"></app-view-user>
+   <app-add-product *ngIf=" selecttab==='addproduct'"></app-add-product>
+  </div>
+
+</div>

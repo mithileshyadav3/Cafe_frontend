@@ -1,0 +1,48 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-3">Products List</h2>
+    <div class="m-2 ">
+     <input type="text" placeholder="search product" (input)="searchProduct($event)">
+    </div>
+  <table class="table table-bordered table-striped text-center">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let p of filterproducts">
+        <td>{{ p.id }}</td>
+
+        <td>
+          <img 
+            [src]="'http://localhost:9090/uploads/' + p.images"
+            width="60" height="60"
+            style="object-fit: cover; border-radius: 5px;"
+          >
+        </td>
+
+        <td>{{ p.name }}</td>
+        <td>{{ p.category }}</td>
+        <td>{{ p.status }}</td>
+        <td>₹ {{ p.price }}</td>
+
+        <td>
+          <button class="btn btn-primary btn-sm me-2" (click)="editProduct(p)">
+            Edit
+          </button>
+
+          <button class="btn btn-danger btn-sm" (click)="deleteProduct(p.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
