@@ -55,10 +55,10 @@
     placeholder="Search for chicken, burger"
   >
   <h2 class="text-center mb-4 fw-bold">🔥 KFC Style Menu</h2>
- @if (filterproducts.length>0) {
+ @if (paginationProducts.length>0) {
   <div class="row">
    
-    <div class="col-md-3 mb-4" *ngFor="let p of filterproducts">
+    <div class="col-md-3 mb-4" *ngFor="let p of paginationProducts">
       <div class="card shadow-lg border-0 rounded-4">
         
         <!-- Product Image -->

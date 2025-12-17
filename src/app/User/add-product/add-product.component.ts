@@ -31,13 +31,13 @@ export class AddProductComponent implements OnInit {
       this.AllProducts()
       this.searchControl.valueChanges.pipe(
       
-        debounceTime(3000),
+        debounceTime(1000),
         filter((search:string)=>search.trim().length>2),
 
     switchMap((search)=> this.productservice.searchProduct(search))).subscribe((res:any)=>{
-       console.log(res)
-      //  if(!search ||)
-       this.filterproducts=res
+          this.paginationProducts=res
+      
+     
      })
     
    }
@@ -49,7 +49,7 @@ export class AddProductComponent implements OnInit {
      this.filterproducts=this.products
      this.totalpages=Math.ceil(this.products.length/this.itemsperpage)
      this.updatePage();
-     console.log(this.products)
+    
     })
    }
    viewDetails(product:any) {
