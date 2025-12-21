@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class FormService {
-    register:string='http://localhost:9090/adduser'
-    login:string='http://localhost:9090/login'
+    register:string='http://localhost:9090/users/adduser'
+    login:string='http://localhost:9090/users/login'
   constructor(private http:HttpClient) { }
 
   Register(data:string){

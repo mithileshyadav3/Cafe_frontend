@@ -16,6 +16,6 @@ export const routes: Routes = [
       path:'createuser',component:CreateUserComponent
       },
       {path:'admin',component:AdminDashboardComponent,canActivate:[authGuard]},
-      {path:'prod',component:AddProductComponent},
+      {path:'prod',component:AddProductComponent,canActivate:[authGuard]},
       {path:'mat',component:UproductDialogComponent}
 ];

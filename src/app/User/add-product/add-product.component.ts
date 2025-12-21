@@ -8,6 +8,7 @@ import {  FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { ProductService } from '../../Service/product.service';
 import { debounceTime, filter, switchMap } from 'rxjs';
+import { ProfileComponent } from '../profile/profile.component';
 
 @Component({
   selector: 'app-add-product',
@@ -17,6 +18,8 @@ import { debounceTime, filter, switchMap } from 'rxjs';
   styleUrl: './add-product.component.css'
 })
 export class AddProductComponent implements OnInit {
+
+
   filterproducts:any[]=[];
       searchControl:FormControl=new FormControl("")
    suggestions:any[]=[]
@@ -55,7 +58,8 @@ export class AddProductComponent implements OnInit {
    viewDetails(product:any) {
     this.matdialog.open(ViewdetailsComponent,{
  data:product,
- width:'500px'
+ maxHeight: '100vh', 
+ width:'700px'
 }
     )
  
@@ -64,6 +68,15 @@ export class AddProductComponent implements OnInit {
    loginPage() {
   this.router.navigate(['/'])
 
+}
+logoutPage() {
+  const result=confirm("Are you sure want to logout")
+  if(result){
+localStorage.removeItem('token')
+this.router.navigate(['/'])
+  }
+
+   
 }
 updatePage(){
  const start=(this.currentpage-1)*this.itemsperpage
@@ -92,4 +105,10 @@ next() {
 //     })
     
 // }
+profilePage() {
+  this.matdialog.open(ProfileComponent,{
+    width:'700px',
+    maxHeight:'100vh'
+  })
+}
 }

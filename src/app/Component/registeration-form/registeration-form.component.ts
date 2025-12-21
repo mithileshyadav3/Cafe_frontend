@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormService } from '../../Service/form.service';
@@ -48,6 +48,7 @@ loginPage() {
         console.log(this.formgroup.value)
        this.formservice.Register(this.formgroup.value).subscribe((res:any)=>{
         alert("Registration successfully");
+        this.router.navigate(['/'])
        })
       }
 }
