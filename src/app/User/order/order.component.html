@@ -1,0 +1,41 @@
+<div class="container mt-4">
+  <h3 class="text-center">Order Here</h3>
+
+  <form (ngSubmit)="placeOrder()" [formGroup]="formgroup">
+<div *ngIf="orderSuccess" class="success-card">
+  🎉 <span>Congratulations!</span><br>
+  Your order has been placed successfully.
+</div>
+    <!-- Product Dropdown -->
+    <div class="mb-3">
+      <label>Select Product</label>
+     <select class="form-control" formControlName="productId">
+        <option value="">-- Select Product --</option>
+        <option *ngFor="let prod of products" [value]="prod.id">
+          {{ prod.name }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Quantity -->
+    <div class="mb-3">
+      <label>Quantity</label>
+      <input
+        type="number"
+        class="form-control"
+       
+        name="quantity"
+        min="1"
+        formControlName="quantity"
+      />
+    </div>
+
+    <!-- Order Button -->
+    <button class="btn btn-primary w-100">
+      Place Order
+    </button>
+
+  </form>
+  
+
+</div>

@@ -6,6 +6,7 @@ import { authGuard } from './Gaurd/auth.guard';
 import { CreateUserComponent } from './Admin/create-user/create-user.component';
 import { AddProductComponent } from './User/add-product/add-product.component';
 import { UproductDialogComponent } from './Dialog/uproduct-dialog/uproduct-dialog.component';
+import { OrderComponent } from './User/order/order.component';
 
 export const routes: Routes = [
       {
@@ -17,5 +18,6 @@ export const routes: Routes = [
       },
       {path:'admin',component:AdminDashboardComponent,canActivate:[authGuard]},
       {path:'prod',component:AddProductComponent,canActivate:[authGuard]},
-      {path:'mat',component:UproductDialogComponent}
+      {path:'mat',component:UproductDialogComponent},
+      {path:'orderprod',component:OrderComponent}
 ];

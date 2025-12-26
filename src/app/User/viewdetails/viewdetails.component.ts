@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-viewdetails',
@@ -9,6 +10,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrl: './viewdetails.component.css'
 })
 export class ViewdetailsComponent implements OnInit {
+  constructor(private router:Router){}
    matdialogRef=inject(MatDialogRef<ViewdetailsComponent>);
     data=inject(MAT_DIALOG_DATA)
   ngOnInit(): void {
@@ -18,5 +20,8 @@ export class ViewdetailsComponent implements OnInit {
 close() {
 this.matdialogRef.close()
 }
-   
+   OrderProduct(){
+    this.close()
+    this.router.navigate(['/orderprod'])
+   }
 }

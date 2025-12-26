@@ -64,7 +64,7 @@ LoggedData(){
   };
        this.authservice.updateProfile(payload).subscribe((res)=>{
         alert("profile update successfully")
-        console.log(res);
+        
        })
       }
 

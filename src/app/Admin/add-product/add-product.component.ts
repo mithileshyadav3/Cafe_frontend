@@ -33,6 +33,7 @@ onSubmit() {
       alert("addded product successfully")
       this.productForm.reset();
      this.products=product
+     
     }))
 }
 onFileSelect(event:any) {
