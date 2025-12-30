@@ -18,7 +18,10 @@ export class OrderComponent implements OnInit {
    
 constructor(private productservice:ProductService,private authservice:AuthService,private orderservice:OrderService,private fb:FormBuilder){}
 products:any=[]
+orders:any=[]
 orderSuccess=false
+pdfshow=false;
+
 formgroup!:FormGroup
 ngOnInit(): void {
      this.formgroup=this.fb.group({
@@ -48,9 +51,12 @@ placeOrder() {
      this.orderservice.OrderItems(userid,orderRequest).subscribe({
       next:(res)=>{
         //  alert("order successfully")
+        this.orders=res
+        console.log(res);
         this.orderSuccess=true
         setTimeout(() => {
           this.orderSuccess=false
+          this.pdfshow=true
         }, 2000);
 
       },
@@ -63,4 +69,28 @@ placeOrder() {
     
    
 }
+Download() {
+  if (!this.orders || !this.orders.order_id) {
+    alert('Order not available');
+    return;
+  }
+
+  const orderId = this.orders.order_id;
+
+  this.orderservice.pdfGeneration(orderId).subscribe({
+    next: (res: Blob) => {
+      const url = window.URL.createObjectURL(res);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `order_${orderId}.pdf`;
+      a.click();
+      window.URL.revokeObjectURL(url);
+    },
+    error: (err) => {
+      console.error(err);
+      alert('PDF download failed');
+    }
+  });
+}
+
 }

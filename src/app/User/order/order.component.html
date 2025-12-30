@@ -36,6 +36,15 @@
     </button>
 
   </form>
+     <div class="mb-4" *ngIf="pdfshow">
+       <button
+  class="btn btn-success mt-3"
   
+  (click)="Download()"
+>
+  Download Invoice PDF
+</button>
+
+     </div>
 
 </div>
