@@ -7,24 +7,71 @@
     <div class="mb-3">
       <label class="form-label">Full Name</label>
       <input type="text" class="form-control" formControlName="fullname">
+      <div class="text-danger"
+ *ngIf="(formgroup.get('fullname')?.touched || isSubmitted)
+ && formgroup.get('fullname')?.errors">
+ <div *ngIf="(formgroup.get('fullname')?.errors?.['required'])">
+    This field is required
+ </div>
+ 
+  <div *ngIf="formgroup.get('fullname')?.errors?.['minlength']">
+    fullname must be at least 3 characters
+  </div>
+      </div>
     </div>
 
     <!-- Username -->
     <div class="mb-3">
       <label class="form-label">Username</label>
       <input type="text" class="form-control" formControlName="username">
+      <div class="text-danger" *ngIf="formgroup.get('username')?.touched||isSubmitted">
+        <div *ngIf="formgroup.get('username')?.errors?.['required']">
+          This field is required
+        </div>
+        <div *ngIf="formgroup.get('username')?.errors?.['minlength']">
+           Username at least 3 string required
+        </div>
+        <div *ngIf="formgroup.get('username')?.errors?.['pattern']">
+            Username must be contains:
+            <ul>
+              
+      <li>1 Small letter</li>
+      <li>1 Number</li>
+      <li>Minimum 3 characters</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3"> 
+<label class="form-label">Gmail</label>
+      <input type="email" class="form-control" formControlName="email">
     </div>
 
     <!-- Password -->
     <div class="mb-3">
       <label class="form-label">Password</label>
       <input type="password" class="form-control" formControlName="password">
+      <div class="text-danger" *ngIf="formgroup.get('password')?.touched||isSubmitted">
+        <div *ngIf="formgroup.get('password')?.errors?.['required']">
+          Password is required 
+        </div>
+       <div *ngIf="formgroup.get('password')?.errors?.['pattern']">
+        Password must contain uppercase, lowercase, number & special character
+       </div>
+      </div>
     </div>
 
     <!-- Phone -->
     <div class="mb-3">
       <label class="form-label">Phone</label>
       <input type="text" class="form-control" formControlName="phone">
+      <div class="text-danger" *ngIf="formgroup.get('phone')?.touched||isSubmitted">
+        <small *ngIf="formgroup.get('phone')?.errors?.['pattern']"> Phone number must be 10 digits</small>
+      
+      <div class="text-danger" *ngIf="formgroup.get('phone')?.errors?.['required']">
+    Phone number is required
+  </div>
+  </div>
     </div>
 
     <!-- Role -->
@@ -60,6 +107,16 @@
         <div class="mb-3">
           <label class="form-label">Pincode</label>
           <input type="number" class="form-control" formControlName="pincode">
+          <div class="text-danger" *ngIf="formgroup.get('address.0.pincode')?.touched||isSubmitted">
+            <small *ngIf="formgroup.get('address.0.pincode')?.errors?.['required']">
+              this filed is required
+            </small>
+            
+
+            <small *ngIf="formgroup.get('address.0.pincode')?.errors?.['pattern']">
+              6 pincode is required
+            </small>
+          </div>
         </div>
 
         <div class="mb-3">

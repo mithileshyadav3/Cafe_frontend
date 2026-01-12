@@ -7,6 +7,8 @@ import { CreateUserComponent } from './Admin/create-user/create-user.component';
 import { AddProductComponent } from './User/add-product/add-product.component';
 import { UproductDialogComponent } from './Dialog/uproduct-dialog/uproduct-dialog.component';
 import { OrderComponent } from './User/order/order.component';
+import { ForgetpasswordComponent } from './User/forgetpassword/forgetpassword.component';
+import { ResetpasswordComponent } from './User/resetpassword/resetpassword.component';
 
 export const routes: Routes = [
       {
@@ -19,5 +21,7 @@ export const routes: Routes = [
       {path:'admin',component:AdminDashboardComponent,canActivate:[authGuard]},
       {path:'prod',component:AddProductComponent,canActivate:[authGuard]},
       {path:'mat',component:UproductDialogComponent},
-      {path:'orderprod',component:OrderComponent}
+      {path:'orderprod',component:OrderComponent},
+      {path:'forgetpassword',component:ForgetpasswordComponent},
+      {path:'resetpassword',component:ResetpasswordComponent}
 ];

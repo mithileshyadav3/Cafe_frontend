@@ -1,1 +1,30 @@
-<p>view-user works!</p>
+<div class="container mt-4">
+<table class="table table-bordered table-striped  text-center" >
+<thead class="table-dark">
+      <tr>
+        
+         <th>Full Name</th>   
+         <th>Username</th>
+         <th>phone no</th>
+      
+        <th>Buiding_Name</th>
+        <th>City</th>
+        <th>Pincode</th>
+        <th>State</th>
+
+      </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let userdata of users">
+    <td>{{ userdata.fullname }}</td>
+    <td>{{ userdata.username }}</td>
+    <td>{{ userdata.phone }}</td>
+    <td>{{ userdata.address[0]?.building_name }}</td>
+    <td>{{ userdata.address[0]?.city }}</td>
+    <td>{{ userdata.address[0]?.pincode }}</td>
+    <td>{{ userdata.address[0]?.state }}</td>
+  </tr>
+</tbody>
+
+</table>
+</div>

@@ -26,6 +26,7 @@ ngOnInit(): void {
 }
 onLogin(){
   this.service.Login(this.loginForm.value).subscribe((data:any)=>{
+    console.log(data)
     alert("login successfully");
     localStorage.setItem('token',data)
     const token=localStorage.getItem("token")
@@ -42,5 +43,9 @@ onLogin(){
       alert("Roles are not found")
     }
   })
+
+}
+forgetpassword(){
+  this.router.navigate(['/resetpassword'])
 }
 }
