@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class FormService {
     register:string='http://localhost:9090/users/adduser'
     login:string='http://localhost:9090/users/login'
+    
   constructor(private http:HttpClient) { }
 
   Register(data:string){
@@ -15,4 +16,9 @@ export class FormService {
   Login(data:any){
     return this.http.post(this.login,data,{responseType:'text'})
   }
+  getCaptcha() {
+  return this.http.get<any>('http://localhost:9090/captcha/generate', { withCredentials: true })
+    
+}
+
 }
