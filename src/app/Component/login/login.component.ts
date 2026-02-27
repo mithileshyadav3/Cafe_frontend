@@ -34,24 +34,33 @@ onLogin(){
     console.log(this.loginForm.value)
      // ✅ Make sure token exists
       if (!data || typeof data !== 'string' || !data.includes('.')) {
-        alert('Login failed: Invalid response');
-        // return;
+        alert(data);
+        return;
       }
     alert("login successfully");
     localStorage.setItem('token',data)
-    const token=localStorage.getItem("token")
-    const payload=JSON.parse(atob(token!.split('.')[1]))
-    const roles=payload.role;
-    if(roles==="ADMIN")
-    {
-    this.router.navigate(['/admin'])
-    }
-    else if(roles==="USER"){
-      this.router.navigate(['/prod'])
-    }
-    else{
-      alert("Roles are not found")
-    }
+    const token = localStorage.getItem('token');
+
+if (token) {
+  const payloadBase64Url = token.split('.')[1];
+
+  const payloadBase64 = payloadBase64Url
+    .replace(/-/g, '+')
+    .replace(/_/g, '/');
+
+  const payload = JSON.parse(atob(payloadBase64));
+
+  const roles = payload.role;
+
+  if (roles === "ADMIN") {
+    this.router.navigate(['/admin']);
+  } else if (roles === "USER") {
+    this.router.navigate(['/prod']);
+  } else {
+    alert("Roles are not found");
+  }
+}
+
   })
 
 }

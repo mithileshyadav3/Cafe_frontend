@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class ApiService {
 
   constructor(private http:HttpClient) { }
-  allproduct:string='http://localhost:9090/allprod'
+  allproduct:string='http://localhost:9090/products/allprod'
   AllProduct(){
    return this.http.get(this.allproduct)
   }

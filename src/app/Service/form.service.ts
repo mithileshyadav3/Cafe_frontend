@@ -14,10 +14,10 @@ export class FormService {
    return this.http.post(this.register,data);
   }
   Login(data:any){
-    return this.http.post(this.login,data,{responseType:'text'})
+    return this.http.post(this.login,data,{responseType:'text', withCredentials: true})
   }
   getCaptcha() {
-  return this.http.get<any>('http://localhost:9090/captcha/generate', { withCredentials: true })
+  return this.http.post<any>('http://localhost:9090/captcha/generate', { withCredentials: true })
     
 }
 
