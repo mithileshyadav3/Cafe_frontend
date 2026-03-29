@@ -19,6 +19,10 @@ export class AuthService {
 const decoded=this.decodeToken();
 return decoded?.userId??null;
   }
+  getUsername():string | null{
+      const username=this.decodeToken();
+      return username?.sub??null
+  }
    loggedinData(){
     return this.http.get(this.loggedin)
    }

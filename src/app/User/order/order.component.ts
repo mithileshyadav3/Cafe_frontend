@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../Service/auth.service';
 import { OrderService } from '../../Service/order.service';
+import { Router } from '@angular/router';
 // import { NgForOf } from "../../../../node_modules/@angular/common/common_module.d-NEF7UaHr";
 
 @Component({
@@ -16,7 +17,7 @@ import { OrderService } from '../../Service/order.service';
 })
 export class OrderComponent implements OnInit {
    
-constructor(private productservice:ProductService,private authservice:AuthService,private orderservice:OrderService,private fb:FormBuilder){}
+constructor(private route:Router,private productservice:ProductService,private authservice:AuthService,private orderservice:OrderService,private fb:FormBuilder){}
 products:any=[]
 orders:any=[]
 orderSuccess=false
@@ -50,14 +51,15 @@ placeOrder() {
   };
      this.orderservice.OrderItems(userid,orderRequest).subscribe({
       next:(res)=>{
-        //  alert("order successfully")
-        this.orders=res
-        console.log(res);
-        this.orderSuccess=true
-        setTimeout(() => {
-          this.orderSuccess=false
-          this.pdfshow=true
-        }, 2000);
+         alert("order successfully")
+         this.route.navigate(['/myorders'])
+        // this.orders=res
+        // console.log(res);
+        // this.orderSuccess=true
+        // setTimeout(() => {
+        //   this.orderSuccess=false
+        //   this.pdfshow=true
+        // }, 2000);
 
       },
       error:(err)=>{

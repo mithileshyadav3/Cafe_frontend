@@ -14,4 +14,7 @@ export class OrderService {
     pdfGeneration(orderId:number){
       return this.http.get(`http://localhost:9090/pdf/download/${orderId}`, { responseType: 'blob' })
     }
+    myOrders(userid:number){
+      return this.http.get(`http://localhost:9090/orders/myorders/${userid}`)
+    }
 }

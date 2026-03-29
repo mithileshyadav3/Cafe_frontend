@@ -4,7 +4,7 @@
 
     <!-- Brand -->
     <a class="navbar-brand fw-bold text-danger fs-4" href="#">
-      🍗 KFC Clone
+      🍗 Hotel Menu
     </a>
 
     <!-- Toggle Button (Mobile) -->
@@ -29,15 +29,15 @@
 
       <!-- Right Menu -->
       <ul class="navbar-nav ms-auto">
-        
+             <li class="nav-item">
+                <a class="nav-link" (click)="myOrders()">My Orders</a>
+             </li>
             <li class="nav-item"> 
-              <a class="nav-link" (click)="profilePage()"><i class="bi bi-person"></i> Profile</a>
+              <a class="nav-link" (click)="profilePage()"><i class="bi bi-person"></i> {{username }}</a>
             </li>
         
 
-        <li class="nav-item">
-          <a class="nav-link" (click)="loginPage()">Login</a>
-        </li>
+       
         <li class="nav-item">
          <a class="nav-link" (click)="logoutPage()">Logout</a>
         </li>

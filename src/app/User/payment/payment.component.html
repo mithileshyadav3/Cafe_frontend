@@ -1,0 +1,22 @@
+<div class="col-md-6 mx-auto">
+  <div class="card shadow-lg p-4 text-center">
+    
+    <h4 class="mb-3">Select Payment Method</h4>
+
+    <ul class="list-group">
+      
+      <li class="list-group-item list-group-item-action payment-option" [class.active]="selectmethod==='CREDITCARD'"
+        (click)="selectMethod('CREDITCARD')">
+        💳 Credit Card
+      </li>
+      
+      <li class="list-group-item list-group-item-action payment-option"
+      [class.active="selectmethod==='UPI'"] (click)="selectMethod('UPI')">
+        📱 UPI
+      </li>
+
+    </ul>
+     <button class=" btn btn-secondary fw-bold bt m-3" (click)="Pay()">Pay</button>
+  </div>
+
+</div>

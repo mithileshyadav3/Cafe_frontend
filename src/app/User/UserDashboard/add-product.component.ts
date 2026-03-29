@@ -9,6 +9,7 @@ import {  FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ProductService } from '../../Service/product.service';
 import { debounceTime, filter, switchMap } from 'rxjs';
 import { ProfileComponent } from '../profile/profile.component';
+import { AuthService } from '../../Service/auth.service';
 
 @Component({
   selector: 'app-add-product',
@@ -19,18 +20,21 @@ import { ProfileComponent } from '../profile/profile.component';
 })
 export class AddProductComponent implements OnInit {
 
-
+       username:string | null=null;
   filterproducts:any[]=[];
       searchControl:FormControl=new FormControl("")
    suggestions:any[]=[]
   currentpage=1;
-  itemsperpage=4;
+  itemsperpage=8;
   totalpages=0;
 
-   constructor(private api:ApiService,private router:Router,private matdialog:MatDialog,private productservice:ProductService){
+   constructor(private authservice:AuthService,private api:ApiService,private router:Router,private matdialog:MatDialog,private productservice:ProductService){
     
    }
    ngOnInit(): void {
+    // get username from token
+    const username=this.authservice.getUsername();
+         this.username=username;
       this.AllProducts()
       this.searchControl.valueChanges.pipe(
       
@@ -62,13 +66,8 @@ export class AddProductComponent implements OnInit {
  width:'700px'
 }
     )
- 
-    
-}
-   loginPage() {
-  this.router.navigate(['/'])
+ }
 
-}
 logoutPage() {
   const result=confirm("Are you sure want to logout")
   if(result){
@@ -76,8 +75,11 @@ localStorage.removeItem('token')
 this.router.navigate(['/'])
   }
 
-   
 }
+myOrders(){
+  this.router.navigate(['/myorders'])
+}
+   
 updatePage(){
  const start=(this.currentpage-1)*this.itemsperpage
  const end=start+this.itemsperpage;
