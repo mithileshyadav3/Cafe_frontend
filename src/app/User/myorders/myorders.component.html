@@ -1,4 +1,6 @@
-<div *ngIf="myorderproduct.length > 0; else noOrders" class="container mt-4">
+
+<div 
+*ngIf="myorderproduct.length > 0; else noOrders" class="container mt-4">
 
   <div class="card mb-3 shadow-sm" *ngFor="let item of myorderproduct">
     <div class="row g-0 align-items-center p-3">
@@ -12,15 +14,16 @@
       <!-- Middle Section -->
       <div class="col-md-3">
         <p class="mb-1">Quantity: {{ item.quantity }}</p>
-        <p class="mb-0">Price: ₹{{ item.product.price }}</p>
+        <p class="mb-0">Price: ₹{{ item.totalprice }}</p>
       </div>
       <div class="col-md-3">
-            <h4>Order Status: PENDING</h4>
+            <h4>Order Status:{{item.status}}</h4>
       </div>
       <!-- Right Section -->
       <div class="col-md-3 text-end">
-        <!-- <button class="btn btn-primary btn-sm me-2">View</button> -->
-        <button class="btn btn-success btn-sm" (click)="Payment( item.order_item_id)">Proceed Payment</button>
+        
+        <button *ngIf="item.status==='PAID'" class="btn btn-primary btn-sm me-2" (click)="downloadReceit(item.order_item_id)">Download Receit</button>
+        <button *ngIf="item.status==='PENDING'" class="btn btn-success btn-sm" (click)="Payment( item.order_item_id)">Proceed Payment</button>
       </div>
 
     </div>

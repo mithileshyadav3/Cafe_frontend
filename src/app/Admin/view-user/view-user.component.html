@@ -1,4 +1,12 @@
+
 <div class="container mt-4">
+  <div class=" m-4">
+ <input type="text" placeholder="Search By username" [(ngModel)]="search">
+ <button type="button" (click)="SearchUser()">Search</button>
+ <div *ngFor="let userss of searchusers">
+  {{ userss.username }} 
+</div>
+  </div>
 <table class="table table-bordered table-striped  text-center" >
 <thead class="table-dark">
       <tr>

@@ -30,11 +30,12 @@ export class PaymentComponent implements OnInit {
           next:(res)=>{
             console.log("Response"+res)
              alert("payment success");
-             this.routes.navigate(['/payment'])
+                 this.routes.navigate(['/myorders'])
           },
           error:(err)=>{
             console.error(err)
             alert("Payment failed")
+            
           }
          })
        }

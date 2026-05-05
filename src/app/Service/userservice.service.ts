@@ -10,5 +10,8 @@ export class UserserviceService {
    Allusers(){
     return this.http.get(this.usrs)
    }
+   UserSeach(searchuser:string){
+    return this.http.get(`http://localhost:9090/users/username?username=${searchuser}`)
+   }
 
 }

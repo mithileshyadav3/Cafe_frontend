@@ -1,5 +1,4 @@
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top">
   <div class="container-fluid">
 
     <!-- Brand -->
@@ -7,46 +6,44 @@
       🍗 Hotel Menu
     </a>
 
-    <!-- Toggle Button (Mobile) -->
+    <!-- Toggle -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-      data-bs-target="#navbarNav" aria-controls="navbarNav"
-      aria-expanded="false" aria-label="Toggle navigation">
+      data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
- <div class="collapse navbar-collapse" id="navbarNav">
 
-      <!-- Center Search Bar -->
-   
-  
+    <div class="collapse navbar-collapse" id="navbarNav">
 
+      <!-- ✅ CENTER SEARCH BAR -->
+      <form class="d-flex mx-auto" style="width: 40%;">
+        <input 
+          type="text"
+          [formControl]="searchControl"
+          class="form-control rounded-pill px-3"
+          placeholder="Search for chicken, burger"
+        >
+      </form>
 
-<!-- Suggestions -->
-<!-- <div *ngIf="suggestions.length > 0" class="border mt-1 p-2 bg-white position-absolute">
-  <div *ngFor="let item of suggestions" class="p-1">
-    {{ item.name }}
-  </div>
-</div> -->
-
-      <!-- Right Menu -->
+      <!-- RIGHT MENU -->
       <ul class="navbar-nav ms-auto">
-             <li class="nav-item">
-                <a class="nav-link" (click)="myOrders()">My Orders</a>
-             </li>
-            <li class="nav-item"> 
-              <a class="nav-link" (click)="profilePage()"><i class="bi bi-person"></i> {{username }}</a>
-            </li>
-        
-
-       
         <li class="nav-item">
-         <a class="nav-link" (click)="logoutPage()">Logout</a>
+          <a class="nav-link" (click)="myOrders()">My Orders</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" (click)="profilePage()">
+            <i class="bi bi-person"></i> {{ username }}
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" (click)="logoutPage()">Logout</a>
         </li>
       </ul>
 
     </div>
   </div>
 </nav>
-
 
 <div class=" mt-4">
    <input 
@@ -56,7 +53,7 @@
 
     placeholder="Search for chicken, burger"
   >
-  <h2 class="text-center mb-4 fw-bold">🔥 KFC Style Menu</h2>
+  
  @if (paginationProducts.length>0) {
   <div class="row">
    

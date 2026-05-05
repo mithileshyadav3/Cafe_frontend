@@ -15,6 +15,8 @@ export class MyordersComponent implements OnInit {
 
   user_id!: number;
   myorderproduct: any[] = [];
+  showrecit:boolean=true;
+  status:string=""
 
   constructor(private orderservice: OrderService, private authservice: AuthService,
     private route:Router
@@ -36,7 +38,8 @@ export class MyordersComponent implements OnInit {
     this.orderservice.myOrders(this.user_id).subscribe({
       next: (myorderProd: any) => {
         this.myorderproduct = myorderProd;
-        console.log(myorderProd)
+        this.status=myorderProd.map((order:any)=>order.status);
+        console.log(this.status);
       },
       error: (err) => {
         console.error('Error fetching orders:', err);
@@ -45,5 +48,21 @@ export class MyordersComponent implements OnInit {
   }
   Payment(id:number){
     this.route.navigate(['/payment',id]);
+  }
+  downloadReceit(id:number){
+      this.orderservice.pdfGeneration(id).subscribe({
+           next: (res: Blob) => {
+      const url = window.URL.createObjectURL(res);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `order_${id}.pdf`;
+      a.click();
+      window.URL.revokeObjectURL(url);
+    },
+    error: (err) => {
+      console.error(err);
+      alert('PDF download failed');
+    }
+      })
   }
 }
